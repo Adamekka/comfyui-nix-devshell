@@ -29,8 +29,7 @@ let
       ]
     else
       throw "You need to specify which variant you want: CPU, ROCm, or CUDA.";
-  variantLower = pkgs.lib.toLower variant;
-  rocmIndexUrl = "https://download.pytorch.org/whl/rocm6.3";
+  rocmIndexUrl = "https://download.pytorch.org/whl/rocm6.4";
   pythonForVenv = pkgs.python312;
 in
 pkgs.mkShell rec {
@@ -66,7 +65,7 @@ pkgs.mkShell rec {
       zstd
     ];
 
-  venvDir = ".venv-${variantLower}";
+  venvDir = ".venv";
 
   LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath buildInputs;
   CUDA_PATH = pkgs.lib.optionalString (
