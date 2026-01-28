@@ -68,9 +68,11 @@ pkgs.mkShell rec {
   venvDir = ".venv";
 
   LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath buildInputs;
-  CUDA_PATH = pkgs.lib.optionalString (
-    variant == "CUDA" || variant == "CUDA-BETA"
-  ) pkgs.cudaPackages.cudatoolkit;
+  CUDA_PATH = pkgs.lib.optionalString
+    (
+      variant == "CUDA" || variant == "CUDA-BETA"
+    )
+    pkgs.cudaPackages.cudatoolkit;
   EXTRA_LDFLAGS =
     pkgs.lib.optionalString (variant == "CUDA" || variant == "CUDA-BETA")
       "-L${
