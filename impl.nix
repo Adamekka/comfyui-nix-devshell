@@ -30,7 +30,7 @@ let
     else
       throw "You need to specify which variant you want: CPU, ROCm, or CUDA.";
   rocmIndexUrl = "https://download.pytorch.org/whl/rocm7.1";
-  pythonForVenv = pkgs.python312;
+  pythonForVenv = pkgs.python314;
 in
 pkgs.mkShell rec {
   name = "comfyui-shell";
@@ -40,7 +40,7 @@ pkgs.mkShell rec {
     hardware_deps
     ++ [
       git # The program instantly crashes if git is not present, even if everything is already downloaded
-      (python312.withPackages (
+      (python314.withPackages (
         p: with p; [
           pip
         ]
