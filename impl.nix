@@ -29,7 +29,7 @@ let
       ]
     else
       throw "You need to specify which variant you want: CPU, ROCm, or CUDA.";
-  rocmIndexUrl = "https://download.pytorch.org/whl/rocm7.1";
+  rocmIndexUrl = "https://download.pytorch.org/whl/rocm7.2";
   pythonForVenv = pkgs.python314;
 in
 pkgs.mkShell rec {
